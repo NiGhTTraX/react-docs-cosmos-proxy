@@ -1,0 +1,25 @@
+{
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx"
+  ],
+  "exclude": [
+    "**/webpack.config.*",
+    "tests/unit/**/*.js"
+  ],
+  "extension": [".js", ".jsx"],
+  "all": true,
+
+  "sourceMap": false,
+  "instrument": false,
+  "require": [
+    "babel-register"
+  ],
+
+  "reporter": ["html"],
+  "report-dir": "tests/results/coverage",
+
+  "lines": 100,
+  "branches": 100,
+  "check-coverage": false
+}
