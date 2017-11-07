@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './header.less';
+
+
 export default class Header extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired

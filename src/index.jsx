@@ -3,6 +3,8 @@ import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
 import DocsTable from './components/docs-table.jsx';
 import Header from './components/header.jsx';
 
+import './index.less';
+
 
 /**
  * @param {ReactComponent} Docs A component responsible for rendering the
