@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
 import DocsTable from './components/docs-table.jsx';
+import Header from './components/header.jsx';
 
 
 /**
@@ -21,7 +22,9 @@ export default ({
 
     return <div className="docs-proxy">
       <div className="docs-panel">
-        <Docs {...docs} />
+        <Header>
+          <Docs {...docs} />
+        </Header>
       </div>
       <div className="component-panel">
         <NextProxy {...this.props} nextProxy={next()} />
