@@ -1,9 +1,9 @@
 import React from 'react';
-import Docs from '../../../src/components/docs.jsx';
+import DocsTable from '../../../src/components/docs-table.jsx';
 import { $render } from '../helpers/rendering.js';
 
 describe('Docs', () => {
   it('should work', () => {
-    $render(<Docs />);
+    $render(<DocsTable />);
   });
 });

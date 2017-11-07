@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
+import DocsTable from './components/docs-table.jsx';
 
 
 /**
@@ -9,9 +10,9 @@ import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
  *     that holds the documentation.
  */
 export default ({
-  Docs,
-  docsProperty
-}) => class DocsProxy extends Component {
+  Docs = DocsTable,
+  docsProperty = '__docgenInfo'
+} = {}) => class DocsProxy extends Component {
   static propTypes = proxyPropTypes;
 
   render() {
