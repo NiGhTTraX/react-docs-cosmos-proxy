@@ -1,0 +1,7 @@
+{
+  "extends": "../../../.babelrc",
+
+  "plugins": [
+    "babel-plugin-react-docgen"
+  ]
+}
