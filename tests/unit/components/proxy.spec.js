@@ -16,7 +16,7 @@ describe('DocsProxy', () => {
     NextProxy = createSpy({ name: 'NextProxy' });
 
     Component = createSpy({ name: 'Component' });
-    Component.__docgenInfo = docs;
+    Component.__docs = docs;
 
     Docs = createSpy({ name: 'Docs' });
 
@@ -31,6 +31,7 @@ describe('DocsProxy', () => {
     };
 
     const DocsProxy = createDocsProxy({
+      docsProperty: '__docs',
       Docs
     });
 
