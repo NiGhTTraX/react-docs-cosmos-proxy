@@ -6,17 +6,19 @@ import { createSpy } from '../helpers/chai-react.js';
 
 
 describe('DocsProxy', () => {
-  let NextProxy, Component, next, props;
+  const docs = {
+    foo: 'bar'
+  };
+
+  let NextProxy, Component, Docs, next, props;
 
   beforeEach(() => {
-    const DocsProxy = createDocsProxy();
-
     NextProxy = createSpy({ name: 'NextProxy' });
 
     Component = createSpy({ name: 'Component' });
-    Component.__docgenInfo = {
-      foo: 'bar'
-    };
+    Component.__docgenInfo = docs;
+
+    Docs = createSpy({ name: 'Docs' });
 
     next = stub().returns('next proxy');
 
@@ -28,6 +30,10 @@ describe('DocsProxy', () => {
       component: Component
     };
 
+    const DocsProxy = createDocsProxy({
+      Docs
+    });
+
     render(<DocsProxy {...props} />);
   });
 
@@ -36,5 +42,9 @@ describe('DocsProxy', () => {
       ...props,
       nextProxy: 'next proxy'
     });
+  });
+
+  it('should render the docs', () => {
+    expect(Docs).to.have.been.renderedWith(docs);
   });
 });

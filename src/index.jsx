@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
-import Docs from './components/docs.jsx';
 
 
-export default () => class DocsProxy extends Component {
+export default ({ Docs }) => class DocsProxy extends Component {
   static propTypes = proxyPropTypes;
 
   render() {
