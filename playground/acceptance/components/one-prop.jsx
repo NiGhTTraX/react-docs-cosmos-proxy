@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 
-// TODO: move these out of src/
-/* eslint-disable */
 export default class OneProp extends Component {
   static propTypes = {
     foo: PropTypes.string
+  };
+
+  static defaultProps = {
+    foo: 'bar'
   };
 
   render() {

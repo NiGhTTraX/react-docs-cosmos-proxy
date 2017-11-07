@@ -5,6 +5,7 @@ services:
     extends:
       file: ../../docker-compose.yml
       service: playground
+    command: npm run playground:acceptance
     environment:
       # Path is relative to the location of the dev server.
       - WEBPACK_CONFIG=./acceptance/webpack.config.acceptance.js

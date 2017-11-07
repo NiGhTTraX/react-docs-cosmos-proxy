@@ -27,7 +27,8 @@
     "_test:acceptance": "mocha --opts tests/acceptance/mocha.opts tests/acceptance/setup.js --recursive tests/acceptance/specs",
     "_test:acceptance:debug": "mocha --opts tests/acceptance/mocha.debug.opts tests/acceptance/setup.js --recursive tests/acceptance/specs",
     "start": "./start.sh",
-    "playground": "cosmos --config playground/cosmos.config.js",
+    "playground:integration": "cosmos --config playground/integration/cosmos.config.js",
+    "playground:acceptance": "cosmos --config playground/acceptance/cosmos.config.js",
     "lint": "npm run lint:files -- .",
     "lint:files": "eslint --ext js --ext jsx",
     "postinstall": "./tools/install-git-hooks.sh"
