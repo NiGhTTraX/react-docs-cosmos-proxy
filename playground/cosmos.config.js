@@ -1,12 +1,11 @@
 module.exports = {
   componentPaths: [
     '../src/components',
-    './acceptance/components'
+    './components'
   ],
 
   fixturePaths: [
-    './fixtures',
-    './acceptance/fixtures'
+    './fixtures'
   ],
 
   webpackConfigPath: '../src/webpack.config.dev.js',

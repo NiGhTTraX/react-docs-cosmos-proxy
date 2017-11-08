@@ -2,6 +2,6 @@
   "extends": "../../../.babelrc",
 
   "plugins": [
-    "babel-plugin-react-docgen"
+    "react-docgen"
   ]
 }
