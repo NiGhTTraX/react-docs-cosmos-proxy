@@ -69,7 +69,7 @@ module.exports = {
         'state',
         'constructor',
         'render',
-        '/^_render.+$/', // any auxiliary _render methods
+        '/^(_)?render.+$/', // any auxiliary _render methods
         'componentWillMount',
         'componentDidMount',
         'componentWillReceiveProps',
