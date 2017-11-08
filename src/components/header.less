@@ -1,10 +1,22 @@
+@import "~reset-css/reset.css";
+
 .header {
-  background: darken(#0C293E, .2);
+  .content {
+    &.hidden {
+      height: 0;
+      overflow: hidden;
+    }
+  }
 
   .toggle {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    border: 0;
+    padding: 0;
+
+    background: darken(#0C293E, .2);
 
     svg {
       width: 20px;
