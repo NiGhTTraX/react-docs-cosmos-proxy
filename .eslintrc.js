@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   'root': true,
 
@@ -13,6 +11,12 @@ module.exports = {
     'airbnb',
     'plugin:import/errors'
   ],
+
+  'settings': {
+    'import/resolver': {
+      'babel-module': { }
+    }
+  },
 
   'rules': {
     // Overwrite the airbnb one to force CallExpression arguments to be indented

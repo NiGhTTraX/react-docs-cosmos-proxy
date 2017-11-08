@@ -1,8 +1,8 @@
 import React from 'react';
 import { stub } from 'sinon';
-import createDocsProxy from '../../../src/index.jsx';
-import { render } from '../helpers/rendering.js';
-import { createSpy } from '../helpers/chai-react.js';
+import createDocsProxy from 'src/index.jsx';
+import { render } from 'tests/unit/helpers/rendering.js';
+import { createSpy } from 'tests/unit/helpers/chai-react.js';
 
 
 describe('DocsProxy', () => {

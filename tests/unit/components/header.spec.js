@@ -1,7 +1,7 @@
 import React from 'react';
 import { Simulate } from 'react-dom/test-utils';
-import Header from '../../../src/components/header.jsx';
-import { $render } from '../helpers/rendering.js';
+import Header from 'src/components/header.jsx';
+import { $render } from 'tests/unit/helpers/rendering.js';
 
 
 describe('Header', () => {

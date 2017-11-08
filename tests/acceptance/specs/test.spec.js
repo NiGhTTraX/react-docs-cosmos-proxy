@@ -1,4 +1,4 @@
-import { mugshotSuite, loadFixture } from '../helpers.js';
+import { mugshotSuite, loadFixture } from 'tests/acceptance/helpers.js';
 
 mugshotSuite('Test', it => {
   it('should work', async () => {
