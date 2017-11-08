@@ -18,10 +18,10 @@
   "module": "./src/docs-proxy.jsx",
   "scripts": {
     "test": "./tests/run.sh",
-    "test:unit": "NODE_ENV=tests nyc npm run _mocha",
-    "test:unit:watch": "NODE_ENV=tests npm run _mocha -- --opts tests/unit/mocha.watch.opts",
+    "test:unit": "NODE_ENV=unit nyc npm run _mocha",
+    "test:unit:watch": "NODE_ENV=unit npm run _mocha -- --opts tests/unit/mocha.watch.opts",
     "_mocha": "mocha tests/unit/helpers/index.node.js 'tests/unit/**/*.spec.js'",
-    "test:unit:debug": "NODE_ENV=tests webpack --bail -w --config ./tests/unit/webpack.config.unit.js",
+    "test:unit:debug": "NODE_ENV=unit webpack --bail -w --config ./tests/unit/webpack.config.unit.js",
     "test:acceptance": "./tests/acceptance/run.sh",
     "test:acceptance:debug": "./tests/acceptance/debug.sh",
     "_test:acceptance": "mocha --opts tests/acceptance/mocha.opts tests/acceptance/setup.js --recursive tests/acceptance/specs",
