@@ -6,21 +6,14 @@ import { createSpy } from '../helpers/chai-react.js';
 
 
 describe('DocsProxy', () => {
-  const docs = {
-    foo: 'bar'
-  };
+  let NextProxy, Component, Docs, DocsProxy, next, props;
 
-  let NextProxy, Component, Docs, next, props;
-
-  beforeEach(() => {
+  beforeEach('common setup', () => {
     NextProxy = createSpy({ name: 'NextProxy' });
 
-    Component = createSpy({ name: 'Component' });
-    Component.__docs = docs;
-
-    Docs = createSpy({ name: 'Docs' });
-
     next = stub().returns('next proxy');
+
+    Component = createSpy({ name: 'Component' });
 
     props = {
       nextProxy: {
@@ -30,22 +23,44 @@ describe('DocsProxy', () => {
       component: Component
     };
 
-    const DocsProxy = createDocsProxy({
+    Docs = createSpy({ name: 'Docs' });
+
+    DocsProxy = createDocsProxy({
       docsProperty: '__docs',
       Docs
     });
-
-    render(<DocsProxy {...props} />);
   });
 
-  it('should render the next proxy', () => {
-    expect(NextProxy).to.have.been.renderedWith({
-      ...props,
-      nextProxy: 'next proxy'
+  describe('with docs', () => {
+    const docs = {
+      foo: 'bar'
+    };
+
+    beforeEach(() => {
+      Component.__docs = docs;
+
+      render(<DocsProxy {...props} />);
+    });
+
+    it('should render the next proxy', () => {
+      expect(NextProxy).to.have.been.renderedWith({
+        ...props,
+        nextProxy: 'next proxy'
+      });
+    });
+
+    it('should render the docs', () => {
+      expect(Docs).to.have.been.renderedWith(docs);
     });
   });
 
-  it('should render the docs', () => {
-    expect(Docs).to.have.been.renderedWith(docs);
+  describe('with no docs', () => {
+    beforeEach(() => {
+      render(<DocsProxy {...props} />);
+    });
+
+    it('should not render the docs', () => {
+      expect(Docs).to.not.have.been.rendered;
+    });
   });
 });

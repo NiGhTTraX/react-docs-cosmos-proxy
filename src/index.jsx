@@ -23,14 +23,21 @@ export default ({
     const { [docsProperty]: docs } = this.props.component;
 
     return <div className="docs-proxy">
-      <div className="docs-panel">
-        <Header>
-          <Docs {...docs} />
-        </Header>
-      </div>
+      {docs ? this.renderDocs() : null}
       <div className="component-panel">
         <NextProxy {...this.props} nextProxy={next()} />
       </div>
+    </div>;
+  }
+
+  renderDocs() {
+    // TODO: move this to a separate component
+    const { [docsProperty]: docs } = this.props.component;
+
+    return <div className="docs-panel">
+      <Header>
+        <Docs {...docs} />
+      </Header>
     </div>;
   }
 };
