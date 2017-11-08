@@ -1,4 +1,4 @@
-import createDocsProxy from '../../src/index.jsx';
+import createDocsProxy from '../src/index.jsx';
 
 const DocsProxy = createDocsProxy();
 
