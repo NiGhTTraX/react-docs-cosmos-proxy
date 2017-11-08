@@ -3,7 +3,13 @@ import DocsTable from '../../../src/components/docs-table.jsx';
 import { $render } from '../helpers/rendering.js';
 
 describe('Docs', () => {
-  it('should work', () => {
-    $render(<DocsTable />);
+  let $docs;
+
+  beforeEach(() => {
+    $docs = $render(<DocsTable displayName="Display name" />);
+  });
+
+  it('should render the name of the component', () => {
+    expect($docs.find('.title').text()).to.equal('Display name');
   });
 });
