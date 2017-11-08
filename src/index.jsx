@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
-import DocsTable from './components/docs-table.jsx';
-import Header from './components/header.jsx';
+import DocsTable from 'src/components/docs-table.jsx';
+import Header from 'src/components/header.jsx';
 
 import './index.less';
+
+const nullStorage = {
+  get() { },
+  set() { }
+};
 
 
 /**
@@ -35,7 +40,7 @@ export default ({
     const { [docsProperty]: docs } = this.props.component;
 
     return <div className="docs-panel">
-      <Header>
+      <Header cache={nullStorage}>
         <Docs {...docs} />
       </Header>
     </div>;

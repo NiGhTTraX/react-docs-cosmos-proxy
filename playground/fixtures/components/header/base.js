@@ -1,6 +1,13 @@
 import React from 'react';
 
+const nullStorage = {
+  get() { },
+  set() { }
+};
+
 export default {
-  props: { },
+  props: {
+    cache: nullStorage
+  },
   children: <span>Content</span>
 };

@@ -7,12 +7,23 @@ import './header.less';
 
 export default class Header extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    // TODO: import this from somewhere; maybe abstract-cache.js?
+    cache: PropTypes.shape({
+      get: PropTypes.func.isRequired,
+      set: PropTypes.func.isRequired
+    }).isRequired
   };
 
-  state = {
-    hidden: true
-  };
+  constructor(props) {
+    super(props);
+
+    const { cache } = this.props;
+
+    this.state = {
+      hidden: !!cache.get('hidden')
+    };
+  }
 
   render() {
     const { children } = this.props;
@@ -44,6 +55,10 @@ export default class Header extends Component {
   }
 
   onToggle = () => {
-    this.setState({ hidden: !this.state.hidden });
+    const { cache } = this.props;
+
+    this.setState({ hidden: !this.state.hidden }, () => {
+      cache.set('hidden', this.state.hidden);
+    });
   }
 }
