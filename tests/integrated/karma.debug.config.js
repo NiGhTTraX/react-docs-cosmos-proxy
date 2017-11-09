@@ -14,6 +14,7 @@ module.exports = config => {
 
     client: {
       mocha: {
+        reporter: 'html',
         timeout: 0
       }
     }
