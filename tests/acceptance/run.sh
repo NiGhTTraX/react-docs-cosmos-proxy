@@ -16,6 +16,8 @@ docker-compose build
 # If we don't create these here, docker-compose will and they will be owned by
 # root.
 mkdir -p screenshots/chrome screenshots/firefox
+rm -rf ./results
+mkdir -p ./results/coverage
 
 docker-compose up -d selenium
 
