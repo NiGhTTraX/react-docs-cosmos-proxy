@@ -29,9 +29,6 @@ RESULT=$(docker-compose ps -q \
   | grep -v 0 | wc -l | tr -d ' ')
 
 if [ $RESULT != 0 ]; then
-  echo Playground logs:
-  docker-compose logs playground
-
   echo Selenium logs:
   docker-compose logs selenium
 fi
