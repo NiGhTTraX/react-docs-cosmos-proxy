@@ -67,4 +67,25 @@ Implementations.forEach(([name, Implementation]) => describe(name, () => {
       expect(ns2.get('foo')).to.equal(2);
     });
   });
+
+  describe('warm cache', () => {
+    let coldCache, warmCache;
+
+    beforeEach(() => {
+      coldCache = new Implementation('ns');
+      coldCache.set('foo', 'bar');
+
+      warmCache = new Implementation('ns');
+    });
+
+    it('should share storage between instances with the same namespace', () => {
+      expect(warmCache.get('foo')).to.equal('bar');
+    });
+
+    it('should clear all instances with the same namespace', () => {
+      warmCache.clear();
+
+      expect(coldCache.get('foo')).to.be.undefined;
+    });
+  });
 }));
