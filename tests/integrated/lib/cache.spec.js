@@ -5,9 +5,9 @@ const Implementations = [
 ];
 
 Implementations.forEach(([name, Implementation]) => describe(name, () => {
-  let instance;
-
   describe('no namespace', () => {
+    let instance;
+
     beforeEach(() => {
       instance = new Implementation();
     });
@@ -38,6 +38,23 @@ Implementations.forEach(([name, Implementation]) => describe(name, () => {
       instance.clear();
 
       expect(instance.get('you-see-me')).to.be.undefined;
+    });
+  });
+
+  describe('namespaced', () => {
+    let ns1, ns2;
+
+    beforeEach(() => {
+      ns1 = new Implementation('namespace1');
+      ns2 = new Implementation('namespace2');
+    });
+
+    it('should not have collisions between namespaces', () => {
+      ns1.set('foo', 1);
+      ns2.set('foo', 2);
+
+      expect(ns1.get('foo')).to.equal(1);
+      expect(ns2.get('foo')).to.equal(2);
     });
   });
 }));
