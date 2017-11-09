@@ -6,8 +6,6 @@ services:
       file: ../../docker-compose.yml
       service: playground
     command: npm run playground
-    expose:
-      - '8989'
     volumes:
       - ./screenshots:/usr/src/app/tests/acceptance/screenshots
       - ./results/coverage:/usr/src/app/tests/acceptance/results/coverage

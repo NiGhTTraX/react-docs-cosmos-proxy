@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  # We only need to spin up the karma server since we're going to manually
+  # connect our own browser to it.
+  karma_debug:
+    extends:
+      file: ../../docker-compose.yml
+      service: playground
+    command: npm run _test:integrated:debug
+    ports:
+      - '9876:9876' # karma server

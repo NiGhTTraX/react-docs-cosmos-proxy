@@ -8,6 +8,7 @@ rm -rf ./acceptance/results/coverage
 mkdir -p ./acceptance/results/coverage
 
 npm run test:unit --silent
+npm run test:integrated --silent
 npm run test:acceptance --silent
 
 cp ./acceptance/results/coverage/*.json ../.nyc_output/
