@@ -17,6 +17,8 @@ module.exports = config => {
         reporter: 'html',
         timeout: 0
       }
-    }
+    },
+
+    logLevel: config.LOG_DEBUG
   });
 };
