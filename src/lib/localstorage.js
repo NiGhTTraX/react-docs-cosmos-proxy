@@ -6,8 +6,7 @@ export default class LocalStorage extends AbstractCache {
   constructor(namespace) {
     super(namespace);
 
-    // Calling store.namespace() returns an empty string v0v.
-    this.store = namespace ? store.namespace(namespace) : store;
+    this.store = store.namespace(namespace);
   }
 
   _get(key) {

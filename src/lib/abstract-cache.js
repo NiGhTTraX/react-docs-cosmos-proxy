@@ -6,7 +6,7 @@ export default class AbstractCache {
   /**
    * @param {String} namespace All of the keys will be namespaced with this.
    */
-  constructor(namespace = '') {
+  constructor(namespace) {
     this.namespace = namespace;
   }
 
