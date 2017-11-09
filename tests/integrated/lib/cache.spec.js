@@ -30,4 +30,12 @@ Implementations.forEach(([name, Implementation]) => describe(name, () => {
 
     expect(instance.get('complex')).to.deep.equal({ foo: 'bar' });
   });
+
+  it('should clear everything', () => {
+    instance.set('you-see-me', 'now');
+
+    instance.clear();
+
+    expect(instance.get('you-see-me')).to.be.undefined;
+  });
 }));
