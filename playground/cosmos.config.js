@@ -1,7 +1,7 @@
 import path from 'path';
 
 
-module.exports = {
+export default {
   componentPaths: [
     path.join(__dirname, '../src/components'),
     path.join(__dirname, 'components')

@@ -19,6 +19,9 @@ module.exports = {
   },
 
   'rules': {
+    // This should be enabled only for src/.
+    'import/no-extraneous-dependencies': 0,
+
     // Overwrite the airbnb one to force CallExpression arguments to be indented
     // like the first one.
     'indent': ['error', 2, {

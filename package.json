@@ -88,6 +88,7 @@
     "mugshot-webdriverio": "~1.0.0",
     "nyc": "~11.3.0",
     "react": "^16.0.0",
+    "react-cosmos-voyager": "~2.0.0",
     "react-cosmos-webpack": "^2.1.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "~3.0.0-beta.6",
