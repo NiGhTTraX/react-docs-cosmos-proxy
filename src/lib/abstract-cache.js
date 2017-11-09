@@ -1,6 +1,7 @@
 /**
  * Volatile persistent key value store.
  */
+// TODO: rename to NamespacedCache?
 export default class AbstractCache {
   /**
    * @param {String} namespace All of the keys will be namespaced with this.
@@ -17,10 +18,12 @@ export default class AbstractCache {
   get(key) {
     const value = this._get(this._getNamespacedKey(key));
 
+    // TODO: is this LocalStorage specific?
     if (value === null) {
       return undefined;
     }
 
+    // TODO: should part of JSONCache?
     return JSON.parse(value);
   }
 
