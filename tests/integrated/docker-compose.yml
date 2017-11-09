@@ -5,6 +5,8 @@ services:
     extends:
       file: ../../docker-compose.yml
       service: playground
+    volumes:
+      - ./results/coverage:/usr/src/app/tests/integrated/results/coverage
 
   selenium:
     extends:
@@ -38,5 +40,7 @@ services:
     expose:
       - 9876
     command: npm run _test:integrated --silent
+    environment:
+      - NODE_ENV=acceptance
     depends_on:
       - selenium

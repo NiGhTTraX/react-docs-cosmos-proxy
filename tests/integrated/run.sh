@@ -11,6 +11,11 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 docker-compose build
 
+# If we don't create these here, docker-compose will and they will be owned by
+# root.
+rm -rf ./results
+mkdir -p ./results/coverage
+
 docker-compose up -d selenium
 
 ../acceptance/wait-for-nodes.sh 2

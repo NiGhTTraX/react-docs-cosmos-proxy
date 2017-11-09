@@ -42,8 +42,15 @@ module.exports = config => {
     },
 
     reporters: [
-      'progress'
+      'progress',
+      'coverage'
     ],
+
+    coverageReporter: {
+      type: 'json',
+      dir: 'results/coverage/',
+      subdir: browser => browser.toLowerCase().split(/[ /-]/)[0]
+    },
 
     browsers: [
       'Chrome',
