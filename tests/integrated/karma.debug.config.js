@@ -11,6 +11,7 @@ module.exports = config => {
 
     // We don't want to exit after the first run.
     singleRun: false,
+    watch: true,
 
     client: {
       mocha: {
