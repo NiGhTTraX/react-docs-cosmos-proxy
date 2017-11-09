@@ -56,5 +56,15 @@ Implementations.forEach(([name, Implementation]) => describe(name, () => {
       expect(ns1.get('foo')).to.equal(1);
       expect(ns2.get('foo')).to.equal(2);
     });
+
+    it('should not clear other namespaces', () => {
+      ns1.set('foo', 1);
+      ns2.set('foo', 2);
+
+      ns1.clear();
+
+      expect(ns1.get('foo')).to.be.undefined;
+      expect(ns2.get('foo')).to.equal(2);
+    });
   });
 }));
