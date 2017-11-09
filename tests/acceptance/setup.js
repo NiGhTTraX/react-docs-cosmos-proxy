@@ -59,7 +59,7 @@ afterEach('coverage', async function() {
     return JSON.stringify(window.__coverage__);
   });
 
-  const name = this.currentTest.fullTitle();
+  const name = this.currentTest.fullTitle().replace(/\//g, '_');
 
   fs.writeFileSync(
     path.join(__dirname, 'results', 'coverage', `${BROWSER}_${name}.json`),
