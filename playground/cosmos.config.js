@@ -1,13 +1,16 @@
+import path from 'path';
+
+
 module.exports = {
   componentPaths: [
-    '../src/components',
-    './components'
+    path.join(__dirname, '../src/components'),
+    path.join(__dirname, 'components')
   ],
 
   fixturePaths: [
-    './fixtures'
+    path.join(__dirname, 'fixtures')
   ],
 
-  webpackConfigPath: '../src/webpack.config.dev.js',
+  webpackConfigPath: path.join(__dirname, '../src/webpack.config.dev.js'),
   hostname: '0.0.0.0'
 };
