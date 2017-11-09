@@ -3,9 +3,7 @@ import Mugshot from 'mugshot';
 import WebdriverIOAdapter from 'mugshot-webdriverio';
 import path from 'path';
 import fs from 'fs';
-import { expect } from 'chai';
-
-global.expect = expect;
+import 'tests/unit/helpers/expect.js';
 
 const { BROWSER } = process.env;
 let mugshot;

@@ -1,3 +1,1 @@
-import { expect } from 'chai';
-
-global.expect = expect;
+import 'tests/unit/helpers/expect.js';
