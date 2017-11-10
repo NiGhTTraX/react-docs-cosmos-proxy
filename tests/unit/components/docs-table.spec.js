@@ -57,4 +57,16 @@ describe('DocsTable', () => {
       expect($docsTable.find('.props')).to.have.length(0);
     });
   });
+
+  describe('with no description', () => {
+    beforeEach(() => {
+      $docsTable = $render(<DocsTable
+        displayName="Display name"
+      />);
+    });
+
+    it('should not render the description', () => {
+      expect($docsTable.find('.description')).to.have.length(0);
+    });
+  });
 });

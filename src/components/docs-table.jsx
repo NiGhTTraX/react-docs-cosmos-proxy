@@ -29,7 +29,7 @@ export default class Docs extends Component {
     return <div className="docs-table">
       <header>
         <h1 className="title">{displayName}</h1>
-        <h2 className="description">{description}</h2>
+        {description && <h2 className="description">{description}</h2>}
       </header>
       {props && this.renderProps()}
     </div>;
