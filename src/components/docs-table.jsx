@@ -15,11 +15,12 @@ export default class Docs extends Component {
       type: PropTypes.shape({
         name: PropTypes.string.isRequired
       }).isRequired
-    })).isRequired
+    }))
   };
 
   static defaultProps = {
-    description: ''
+    description: '',
+    props: undefined
   };
 
   render() {
@@ -30,20 +31,26 @@ export default class Docs extends Component {
         <h1 className="title">{displayName}</h1>
         <h2 className="description">{description}</h2>
       </header>
-      <table className="props">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(props).map(prop => <tr key={prop} className="prop">
-            <td className="name">{prop}</td>
-            <td className="type">{props[prop].type.name}</td>
-          </tr>)}
-        </tbody>
-      </table>
+      {props && this.renderProps()}
     </div>;
+  }
+
+  renderProps() {
+    const { props } = this.props;
+
+    return <table className="props">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(props).map(prop => <tr key={prop} className="prop">
+          <td className="name">{prop}</td>
+          <td className="type">{props[prop].type.name}</td>
+        </tr>)}
+      </tbody>
+    </table>;
   }
 }
