@@ -6,10 +6,17 @@ describe('Docs', () => {
   let $docs;
 
   beforeEach(() => {
-    $docs = $render(<DocsTable displayName="Display name" />);
+    $docs = $render(<DocsTable
+      displayName="Display name"
+      description="Lorem ipsum"
+    />);
   });
 
   it('should render the name of the component', () => {
     expect($docs.find('.title').text()).to.equal('Display name');
+  });
+
+  it('should render the component\'s description', () => {
+    expect($docs.find('.description').text()).to.equal('Lorem ipsum');
   });
 });
