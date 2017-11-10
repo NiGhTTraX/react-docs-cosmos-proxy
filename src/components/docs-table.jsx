@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './docs-table.less';
+
 export default class Docs extends Component {
   static propTypes = {
     displayName: PropTypes.string.isRequired,
@@ -23,12 +25,12 @@ export default class Docs extends Component {
   render() {
     const { displayName, description, props } = this.props;
 
-    return <div className="docs">
+    return <div className="docs-table">
       <header>
         <h1 className="title">{displayName}</h1>
         <h2 className="description">{description}</h2>
       </header>
-      <table>
+      <table className="props">
         <thead>
           <tr>
             <th>Name</th>
