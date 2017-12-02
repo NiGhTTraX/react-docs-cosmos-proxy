@@ -15,8 +15,8 @@ export default {
     },
 
     PropInfos: [
-      () => <span>Info 1</span>,
-      () => <span>Info 2</span>
+      { header: 'header 1', component: () => <span>Info 1</span> },
+      { header: 'header 2', component: () => <span>Info 2</span> }
     ]
   }
 };

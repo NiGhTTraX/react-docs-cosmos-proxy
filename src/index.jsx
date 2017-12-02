@@ -9,7 +9,14 @@ import './index.less';
 const headerCache = new LocalStorage('docs_proxy_header');
 
 const DummyInfo = () => <span>Dummy info</span>;
-const DefaultDocsTable = props => <DocsTable {...props} PropInfos={[DummyInfo, DummyInfo]} />;
+const PropInfos = [{
+  header: 'header 1',
+  component: DummyInfo
+}, {
+  header: 'header 2',
+  component: DummyInfo
+}];
+const DefaultDocsTable = props => <DocsTable {...props} PropInfos={PropInfos} />;
 
 /**
  * @param {ReactComponent} Docs A component responsible for rendering the

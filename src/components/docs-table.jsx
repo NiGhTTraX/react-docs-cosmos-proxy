@@ -21,8 +21,12 @@ export default class Docs extends Component {
     /**
      * Components that will render information about the props. Each of them
      * will receive the entire prop info object.
+     * TODO: rename to `columns`
      */
-    PropInfos: PropTypes.arrayOf(PropTypes.func).isRequired
+    PropInfos: PropTypes.arrayOf(PropTypes.shape({
+      header: PropTypes.string.isRequired,
+      component: PropTypes.func.isRequired
+    })).isRequired
   };
 
   static defaultProps = {
@@ -45,17 +49,19 @@ export default class Docs extends Component {
   renderProps() {
     const { props, PropInfos } = this.props;
 
-    /* eslint-disable react/no-array-index-key */
     return <table className="props">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Type</th>
+          {PropInfos.map(({ header }) => <th key={header} className="prop-header">
+            {header}
+          </th>)}
         </tr>
       </thead>
       <tbody>
         {Object.keys(props).map(prop => <tr key={prop} className="prop">
-          {PropInfos.map((PropInfo, index) => <td key={index} className="prop-info">
+          {PropInfos.map(({ header, component: PropInfo }) => <td key={header}
+            className="prop-info"
+          >
             <PropInfo {...props[prop]} />
           </td>)}
         </tr>)}

@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import DocsTable from 'src/components/docs-table.jsx';
 import { $render } from 'tests/unit/helpers/rendering.js';
 import { createSpy } from 'tests/unit/helpers/chai-react.js';
@@ -14,8 +15,8 @@ describe('DocsTable', () => {
 
     beforeEach(() => {
       PropInfos = [
-        createSpy({ name: 'PropInfo1' }),
-        createSpy({ name: 'PropInfo2' })
+        { header: 'Header 1', component: createSpy({ name: 'PropInfo1' }) },
+        { header: 'Header 2', component: createSpy({ name: 'PropInfo2' }) }
       ];
 
       $docsTable = $render(<DocsTable
@@ -38,12 +39,21 @@ describe('DocsTable', () => {
       expect($docsTable.find('.prop')).to.have.length(2);
     });
 
+    it('should render all the header columns', () => {
+      expect($docsTable.find('.prop-header').map(function() {
+        return $(this).text();
+      }).get()).to.deep.equal([
+        'Header 1',
+        'Header 2'
+      ]);
+    });
+
     it('should render all the prop info', () => {
       expect($docsTable.find('.prop-info')).to.have.length(2 * 2);
 
       Object.keys(props).forEach(prop => {
-        PropInfos.forEach(propInfo => {
-          expect(propInfo).to.have.been.renderedWith(props[prop]);
+        PropInfos.forEach(({ component }) => {
+          expect(component).to.have.been.renderedWith(props[prop]);
         });
       });
     });
