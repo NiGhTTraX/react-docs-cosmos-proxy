@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
 import DocsTable from 'src/components/docs-table/docs-table.jsx';
+import Name from 'src/components/docs-table/columns/name.jsx';
 import Header from 'src/components/header.jsx';
 import LocalStorage from 'src/lib/localstorage.js';
 
@@ -10,8 +11,8 @@ const headerCache = new LocalStorage('docs_proxy_header');
 
 const DummyInfo = () => <span>Dummy info</span>;
 const Columns = [{
-  header: 'header 1',
-  component: DummyInfo
+  header: 'Name',
+  component: Name
 }, {
   header: 'header 2',
   component: DummyInfo
