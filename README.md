@@ -1,7 +1,7 @@
 react-docs-cosmos-proxy
 ======
 
-[![Build Status](https://travis-ci.org/NiGhTTraX/react-cosmos-docs-proxy.svg?branch=master)](https://travis-ci.org/NiGhTTraX/react-cosmos-docs-proxy)
+[![Build Status](https://travis-ci.org/NiGhTTraX/react-docs-cosmos-proxy.svg?branch=master)](https://travis-ci.org/NiGhTTraX/react-cosmos-docs-proxy)
 
 ----
 
