@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default {
   props: {
     displayName: 'MyAwesomeComponent',
@@ -10,6 +12,11 @@ export default {
       bar: {
         type: { name: 'integer' }
       }
-    }
+    },
+
+    PropInfos: [
+      () => <span>Info 1</span>,
+      () => <span>Info 2</span>
+    ]
   }
 };

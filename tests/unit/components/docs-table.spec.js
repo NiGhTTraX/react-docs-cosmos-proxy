@@ -1,10 +1,10 @@
 import React from 'react';
-import $ from 'jquery';
 import DocsTable from 'src/components/docs-table.jsx';
 import { $render } from 'tests/unit/helpers/rendering.js';
+import { createSpy } from 'tests/unit/helpers/chai-react.js';
 
 describe('DocsTable', () => {
-  let $docsTable;
+  let $docsTable, PropInfos;
 
   describe('with props', () => {
     const props = {
@@ -13,10 +13,16 @@ describe('DocsTable', () => {
     };
 
     beforeEach(() => {
+      PropInfos = [
+        createSpy({ name: 'PropInfo1' }),
+        createSpy({ name: 'PropInfo2' })
+      ];
+
       $docsTable = $render(<DocsTable
         displayName="Display name"
         description="Lorem ipsum"
         props={props}
+        PropInfos={PropInfos}
       />);
     });
 
@@ -32,16 +38,14 @@ describe('DocsTable', () => {
       expect($docsTable.find('.prop')).to.have.length(2);
     });
 
-    it('should render the prop names', () => {
-      expect($docsTable.find('.prop .name').map(function() {
-        return $(this).text();
-      }).get()).to.deep.equal(['foo', 'bar']);
-    });
+    it('should render all the prop info', () => {
+      expect($docsTable.find('.prop-info')).to.have.length(2 * 2);
 
-    it('should render the prop types', () => {
-      expect($docsTable.find('.prop .type').map(function() {
-        return $(this).text();
-      }).get()).to.deep.equal(['string', 'number']);
+      Object.keys(props).forEach(prop => {
+        PropInfos.forEach(propInfo => {
+          expect(propInfo).to.have.been.renderedWith(props[prop]);
+        });
+      });
     });
   });
 
@@ -50,6 +54,7 @@ describe('DocsTable', () => {
       $docsTable = $render(<DocsTable
         displayName="Display name"
         description="Lorem ipsum"
+        PropInfos={[]}
       />);
     });
 
@@ -62,6 +67,7 @@ describe('DocsTable', () => {
     beforeEach(() => {
       $docsTable = $render(<DocsTable
         displayName="Display name"
+        PropInfos={[]}
       />);
     });
 

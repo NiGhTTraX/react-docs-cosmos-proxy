@@ -8,6 +8,8 @@ import './index.less';
 
 const headerCache = new LocalStorage('docs_proxy_header');
 
+const DummyInfo = () => <span>Dummy info</span>;
+const DefaultDocsTable = props => <DocsTable {...props} PropInfos={[DummyInfo, DummyInfo]} />;
 
 /**
  * @param {ReactComponent} Docs A component responsible for rendering the
@@ -16,7 +18,7 @@ const headerCache = new LocalStorage('docs_proxy_header');
  *     that holds the documentation.
  */
 export default ({
-  Docs = DocsTable,
+  Docs = DefaultDocsTable,
   docsProperty = '__docgenInfo'
 } = {}) => class DocsProxy extends Component {
   static propTypes = proxyPropTypes;
