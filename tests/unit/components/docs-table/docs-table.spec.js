@@ -53,7 +53,10 @@ describe('DocsTable', () => {
 
       Object.keys(props).forEach(prop => {
         Columns.forEach(({ component }) => {
-          expect(component).to.have.been.renderedWith(props[prop]);
+          expect(component).to.have.been.renderedWith({
+            name: prop,
+            docs: props[prop]
+          });
         });
       });
     });

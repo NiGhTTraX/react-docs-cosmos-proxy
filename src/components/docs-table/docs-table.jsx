@@ -64,7 +64,7 @@ export default class Docs extends Component {
           {Columns.map(({ header, component: PropInfo }) => <td key={header}
             className="prop-info"
           >
-            <PropInfo {...props[prop]} />
+            <PropInfo name={prop} docs={props[prop]} />
           </td>)}
         </tr>)}
       </tbody>
