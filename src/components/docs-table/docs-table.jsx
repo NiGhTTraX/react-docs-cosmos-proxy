@@ -19,12 +19,14 @@ export default class Docs extends Component {
 
 
     /**
-     * Components that will render information about the props. Each of them
-     * will receive the entire prop info object.
-     * TODO: rename to `columns`
+     * Components that will render information about the props.
      */
     Columns: PropTypes.arrayOf(PropTypes.shape({
-      header: PropTypes.string.isRequired,
+      header: PropTypes.node.isRequired,
+
+      /**
+       * Will receive the `name` of the prop and its `docs`.
+       */
       component: PropTypes.func.isRequired
     })).isRequired
   };

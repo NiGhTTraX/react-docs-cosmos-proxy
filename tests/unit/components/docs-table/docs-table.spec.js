@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import DocsTable from 'src/components/docs-table.jsx';
+import DocsTable from 'src/components/docs-table/docs-table.jsx';
 import { $render } from 'tests/unit/helpers/rendering.js';
 import { createSpy } from 'tests/unit/helpers/chai-react.js';
 

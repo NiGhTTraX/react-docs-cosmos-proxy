@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
-import DocsTable from 'src/components/docs-table.jsx';
+import DocsTable from 'src/components/docs-table/docs-table.jsx';
 import Header from 'src/components/header.jsx';
 import LocalStorage from 'src/lib/localstorage.js';
 
