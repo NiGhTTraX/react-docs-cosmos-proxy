@@ -5,7 +5,7 @@ import { $render } from 'tests/unit/helpers/rendering.js';
 import { createSpy } from 'tests/unit/helpers/chai-react.js';
 
 describe('DocsTable', () => {
-  let $docsTable, PropInfos;
+  let $docsTable, Columns;
 
   describe('with props', () => {
     const props = {
@@ -14,7 +14,7 @@ describe('DocsTable', () => {
     };
 
     beforeEach(() => {
-      PropInfos = [
+      Columns = [
         { header: 'Header 1', component: createSpy({ name: 'PropInfo1' }) },
         { header: 'Header 2', component: createSpy({ name: 'PropInfo2' }) }
       ];
@@ -23,7 +23,7 @@ describe('DocsTable', () => {
         displayName="Display name"
         description="Lorem ipsum"
         props={props}
-        PropInfos={PropInfos}
+        Columns={Columns}
       />);
     });
 
@@ -52,7 +52,7 @@ describe('DocsTable', () => {
       expect($docsTable.find('.prop-info')).to.have.length(2 * 2);
 
       Object.keys(props).forEach(prop => {
-        PropInfos.forEach(({ component }) => {
+        Columns.forEach(({ component }) => {
           expect(component).to.have.been.renderedWith(props[prop]);
         });
       });
@@ -64,7 +64,7 @@ describe('DocsTable', () => {
       $docsTable = $render(<DocsTable
         displayName="Display name"
         description="Lorem ipsum"
-        PropInfos={[]}
+        Columns={[]}
       />);
     });
 
@@ -77,7 +77,7 @@ describe('DocsTable', () => {
     beforeEach(() => {
       $docsTable = $render(<DocsTable
         displayName="Display name"
-        PropInfos={[]}
+        Columns={[]}
       />);
     });
 

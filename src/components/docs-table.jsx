@@ -23,7 +23,7 @@ export default class Docs extends Component {
      * will receive the entire prop info object.
      * TODO: rename to `columns`
      */
-    PropInfos: PropTypes.arrayOf(PropTypes.shape({
+    Columns: PropTypes.arrayOf(PropTypes.shape({
       header: PropTypes.string.isRequired,
       component: PropTypes.func.isRequired
     })).isRequired
@@ -47,19 +47,19 @@ export default class Docs extends Component {
   }
 
   renderProps() {
-    const { props, PropInfos } = this.props;
+    const { props, Columns } = this.props;
 
     return <table className="props">
       <thead>
         <tr>
-          {PropInfos.map(({ header }) => <th key={header} className="prop-header">
+          {Columns.map(({ header }) => <th key={header} className="prop-header">
             {header}
           </th>)}
         </tr>
       </thead>
       <tbody>
         {Object.keys(props).map(prop => <tr key={prop} className="prop">
-          {PropInfos.map(({ header, component: PropInfo }) => <td key={header}
+          {Columns.map(({ header, component: PropInfo }) => <td key={header}
             className="prop-info"
           >
             <PropInfo {...props[prop]} />
