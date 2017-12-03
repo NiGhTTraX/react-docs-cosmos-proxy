@@ -1,5 +1,8 @@
+@inset-spacing: 4px;
+@inset-squish-spacing: 4px 8px;
+
 .docs-table {
-  padding: 4px;
+  padding: @inset-spacing;
 
   header {
     .title {
@@ -15,9 +18,16 @@
   .props {
     margin-top: 20px;
 
+    .prop-header {
+      padding: @inset-squish-spacing;
+      font-weight: bold;
+      border-bottom: 1px solid darken(#0C293E, .8);
+
+    }
+
     .prop {
       td {
-        padding: 8px;
+        padding: @inset-squish-spacing;
       }
 
       .name {

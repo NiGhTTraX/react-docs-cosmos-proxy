@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
+
 import DocsTable from 'src/components/docs-table/docs-table.jsx';
 import Name from 'src/components/docs-table/columns/name.jsx';
+import Type from 'src/components/docs-table/columns/type.jsx';
 import Default from 'src/components/docs-table/columns/default.jsx';
+
 import Header from 'src/components/header.jsx';
 import LocalStorage from 'src/lib/localstorage.js';
 
@@ -13,6 +16,9 @@ const headerCache = new LocalStorage('docs_proxy_header');
 const Columns = [{
   header: 'Name',
   component: Name
+}, {
+  header: 'Type',
+  component: Type
 }, {
   header: 'Default',
   component: Default
