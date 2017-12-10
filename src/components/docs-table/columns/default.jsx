@@ -12,6 +12,6 @@ export default class Default extends Component {
     const { docs } = this.props;
     const { required, defaultValue } = docs;
 
-    return <span>{required ? 'Required' : defaultValue.value}</span>;
+    return <span>{required ? 'Required' : defaultValue && defaultValue.value}</span>;
   }
 }
