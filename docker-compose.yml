@@ -3,6 +3,6 @@ version: '2.1'
 services:
   playground:
     build: ./
-    command: npm run playground:integration
+    command: npm run playground
     environment:
       - NODE_ENV
