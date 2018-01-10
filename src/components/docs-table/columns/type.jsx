@@ -34,6 +34,7 @@ export default class Type extends Component {
   _renderShape(value) {
     const keys = Object.keys(value);
 
+    // TODO: should we use <dl><dt><dd>?
     return <ul className="shape">
       {keys.map(key => <li className="shape-key" key={key}>
         {key}: {this._render(value[key])}
