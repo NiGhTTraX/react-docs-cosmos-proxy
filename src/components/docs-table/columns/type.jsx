@@ -19,7 +19,7 @@ export default class Type extends Component {
 
       return <ul className="shape">
         {keys.map(key => <li className="shape-key" key={key}>
-          {key}
+          {key}: {type.value[key].name}
         </li>)}
       </ul>;
     }

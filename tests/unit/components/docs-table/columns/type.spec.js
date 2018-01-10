@@ -34,5 +34,9 @@ describe('Type column', () => {
     it('should render the keys', () => {
       expect($type.text()).to.include('foo').and.to.include('bar');
     });
+
+    it('should render the types of the keys', () => {
+      expect($type.text()).to.include('bool').and.to.include('number');
+    });
   });
 });
