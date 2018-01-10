@@ -11,7 +11,12 @@ export default class All extends Component {
     primitive: PropTypes.string,
 
     /* A required primitive type */
-    primitiveRequired: PropTypes.number.isRequired
+    primitiveRequired: PropTypes.string.isRequired,
+
+    primitiveShape: PropTypes.shape({
+      required: PropTypes.string.isRequired,
+      optional: PropTypes.bool
+    }).isRequired
   };
 
   static defaultProps = {

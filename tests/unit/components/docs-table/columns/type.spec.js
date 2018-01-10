@@ -4,8 +4,35 @@ import { $render } from 'tests/unit/helpers/rendering.js';
 
 
 describe('Type column', () => {
-  it('should render the primitive type\'s name', () => {
-    const $type = $render(<Type docs={{ type: { name: 'string' } }} />);
-    expect($type.text()).to.equal('string');
+  let $type;
+
+  describe('primitive', () => {
+    beforeEach(() => {
+      $type = $render(<Type docs={{ type: { name: 'string' } }} />);
+    });
+
+    it('should render the primitive type\'s name', () => {
+      expect($type.text()).to.equal('string');
+    });
+  });
+
+  describe('shape', () => {
+    beforeEach(() => {
+      const docs = {
+        type: {
+          name: 'shape',
+          value: {
+            foo: { name: 'bool' },
+            bar: { name: 'number' }
+          }
+        }
+      };
+
+      $type = $render(<Type docs={docs} />);
+    });
+
+    it('should render the keys', () => {
+      expect($type.text()).to.include('foo').and.to.include('bar');
+    });
   });
 });
