@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// TODO: this smells like a SRP violation.
+const _renderPrimitive = name => <span>{name}</span>;
+
 export default class Type extends Component {
   static propTypes = {
     docs: PropTypes.shape({
@@ -19,16 +22,22 @@ export default class Type extends Component {
   _render(type) {
     const { name, value } = type;
 
-    if (name === 'shape') {
-      const keys = Object.keys(value);
-
-      return <ul className="shape">
-        {keys.map(key => <li className="shape-key" key={key}>
-          {key}: {this._render(value[key])}
-        </li>)}
-      </ul>;
+    // TODO: this smells like an O/C violation.
+    switch (name) {
+      case 'shape':
+        return this._renderShape(value);
+      default:
+        return _renderPrimitive(name);
     }
+  }
 
-    return <span>{name}</span>;
+  _renderShape(value) {
+    const keys = Object.keys(value);
+
+    return <ul className="shape">
+      {keys.map(key => <li className="shape-key" key={key}>
+        {key}: {this._render(value[key])}
+      </li>)}
+    </ul>;
   }
 }
