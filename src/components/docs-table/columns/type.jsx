@@ -12,18 +12,19 @@ export default class Type extends Component {
 
   render() {
     const { type } = this.props.docs;
-    const { name } = type;
 
-    return this._render(name, type);
+    return this._render(type);
   }
 
-  _render(name, type) {
+  _render(type) {
+    const { name, value } = type;
+
     if (name === 'shape') {
-      const keys = Object.keys(type.value);
+      const keys = Object.keys(value);
 
       return <ul className="shape">
         {keys.map(key => <li className="shape-key" key={key}>
-          {key}: {this._render(type.value[key].name, type.value[key])}
+          {key}: {this._render(value[key])}
         </li>)}
       </ul>;
     }
