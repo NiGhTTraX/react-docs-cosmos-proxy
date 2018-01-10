@@ -15,7 +15,10 @@ export default class All extends Component {
 
     primitiveShape: PropTypes.shape({
       required: PropTypes.string.isRequired,
-      optional: PropTypes.bool
+      optional: PropTypes.bool,
+      shape: PropTypes.shape({
+        foo: PropTypes.any
+      })
     }).isRequired
   };
 

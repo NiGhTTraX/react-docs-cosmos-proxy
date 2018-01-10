@@ -17,26 +17,54 @@ describe('Type column', () => {
   });
 
   describe('shape', () => {
-    beforeEach(() => {
-      const docs = {
-        type: {
-          name: 'shape',
-          value: {
-            foo: { name: 'bool' },
-            bar: { name: 'number' }
+    describe('primitive', () => {
+      beforeEach(() => {
+        const docs = {
+          type: {
+            name: 'shape',
+            value: {
+              foo: { name: 'bool' },
+              bar: { name: 'number' }
+            }
           }
-        }
-      };
+        };
 
-      $type = $render(<Type docs={docs} />);
+        $type = $render(<Type docs={docs} />);
+      });
+
+      it('should render the keys', () => {
+        expect($type.text()).to.include('foo').and.to.include('bar');
+      });
+
+      it('should render the types of the keys', () => {
+        expect($type.text()).to.include('bool').and.to.include('number');
+      });
     });
 
-    it('should render the keys', () => {
-      expect($type.text()).to.include('foo').and.to.include('bar');
-    });
+    describe('complex', () => {
+      beforeEach(() => {
+        const docs = {
+          type: {
+            name: 'shape',
+            value: {
+              foo: {
+                name: 'shape',
+                value: {
+                  bar: {
+                    name: 'bool'
+                  }
+                }
+              }
+            }
+          }
+        };
 
-    it('should render the types of the keys', () => {
-      expect($type.text()).to.include('bool').and.to.include('number');
+        $type = $render(<Type docs={docs} />);
+      });
+
+      it('should render complex value types', () => {
+        expect($type.text()).to.include('bar').and.to.include('bool');
+      });
     });
   });
 });
