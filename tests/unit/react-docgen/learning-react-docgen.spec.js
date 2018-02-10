@@ -2,9 +2,7 @@ import { transform } from 'babel-core';
 
 describe('Learning react-docgen', () => {
   it('should generate something for a string prop', () => {
-    const info = getDocgenInfo('primitive: PropTypes.string');
-
-    expect(info).to.deep.equal([{
+    checkDocgenOutputForProptypes('primitive: PropTypes.string', [{
       description: '',
       methods: [],
       props: {
@@ -20,9 +18,7 @@ describe('Learning react-docgen', () => {
   });
 
   it('should generate something for a number prop', () => {
-    const info = getDocgenInfo('primitive: PropTypes.number');
-
-    expect(info).to.deep.equal([{
+    checkDocgenOutputForProptypes('primitive: PropTypes.number', [{
       description: '',
       methods: [],
       props: {
@@ -38,9 +34,7 @@ describe('Learning react-docgen', () => {
   });
 
   it('should generate something for a boolean prop', () => {
-    const info = getDocgenInfo('primitive: PropTypes.bool');
-
-    expect(info).to.deep.equal([{
+    checkDocgenOutputForProptypes('primitive: PropTypes.bool', [{
       description: '',
       methods: [],
       props: {
@@ -57,9 +51,7 @@ describe('Learning react-docgen', () => {
 
 
   it('should generate something for a required prop', () => {
-    const info = getDocgenInfo('primitive: PropTypes.string.isRequired');
-
-    expect(info).to.deep.equal([{
+    checkDocgenOutputForProptypes('primitive: PropTypes.string.isRequired', [{
       description: '',
       methods: [],
       props: {
@@ -75,31 +67,29 @@ describe('Learning react-docgen', () => {
   });
 
   it('should generate something for multiple props', () => {
-    const info = getDocgenInfo(`
+    checkDocgenOutputForProptypes(`
       prop1: PropTypes.string,
       prop2: PropTypes.number
-    `);
-
-    expect(info).to.deep.equal([{
-      description: '',
-      methods: [],
-      props: {
-        prop1: {
-          type: {
-            name: 'string'
+    `, [{
+        description: '',
+        methods: [],
+        props: {
+          prop1: {
+            type: {
+              name: 'string'
+            },
+            required: false,
+            description: ''
           },
-          required: false,
-          description: ''
-        },
-        prop2: {
-          type: {
-            name: 'number'
-          },
-          required: false,
-          description: ''
+          prop2: {
+            type: {
+              name: 'number'
+            },
+            required: false,
+            description: ''
+          }
         }
-      }
-    }]);
+      }]);
   });
 
   /**
@@ -171,5 +161,15 @@ describe('Learning react-docgen', () => {
     eval(generateAndCompileCode(propTypes, 'Foo'));
 
     return Foo.__docgenInfo;
+  }
+
+  /**
+   * @param {String} propTypes
+   * @param {*} docgenOutput
+   */
+  function checkDocgenOutputForProptypes(propTypes, docgenOutput) {
+    const info = getDocgenInfo(propTypes);
+
+    expect(info).to.deep.equal(docgenOutput);
   }
 });
