@@ -1,95 +1,91 @@
 import { transform } from 'babel-core';
 
 describe('Learning react-docgen', () => {
-  it('should generate something for a string prop', () => {
-    checkDocgenOutputForProptypes('primitive: PropTypes.string', [{
-      description: '',
-      methods: [],
-      props: {
-        primitive: {
-          type: {
-            name: 'string'
-          },
-          required: false,
-          description: ''
-        }
+  /**
+   * A react-docgen output test for prop types.
+   * @typedef propTypeTest
+   *
+   * @property {String} name The name of the test.
+   * @property {String} propTypes The literal string representation of the
+   *   prop types e.g. `foo: PropType.string`.
+   * @property {*} output The expected output, grabbed from __docgenInfo.
+   */
+
+  /**
+   * @type {propTypeTest[]}
+   */
+  const propTests = [{
+    name: 'a string prop',
+    propTypes: 'string: PropTypes.string',
+    output: {
+      string: {
+        type: {
+          name: 'string'
+        },
+        required: false,
+        description: ''
       }
-    }]);
-  });
-
-  it('should generate something for a number prop', () => {
-    checkDocgenOutputForProptypes('primitive: PropTypes.number', [{
-      description: '',
-      methods: [],
-      props: {
-        primitive: {
-          type: {
-            name: 'number'
-          },
-          required: false,
-          description: ''
-        }
+    }
+  }, {
+    name: 'a number prop',
+    propTypes: 'number: PropTypes.number',
+    output: {
+      number: {
+        type: {
+          name: 'number'
+        },
+        required: false,
+        description: ''
       }
-    }]);
-  });
-
-  it('should generate something for a boolean prop', () => {
-    checkDocgenOutputForProptypes('primitive: PropTypes.bool', [{
-      description: '',
-      methods: [],
-      props: {
-        primitive: {
-          type: {
-            name: 'bool'
-          },
-          required: false,
-          description: ''
-        }
+    }
+  }, {
+    name: 'a boolean prop',
+    propTypes: 'boolean: PropTypes.bool',
+    output: {
+      boolean: {
+        type: {
+          name: 'bool'
+        },
+        required: false,
+        description: ''
       }
-    }]);
-  });
-
-
-  it('should generate something for a required prop', () => {
-    checkDocgenOutputForProptypes('primitive: PropTypes.string.isRequired', [{
-      description: '',
-      methods: [],
-      props: {
-        primitive: {
-          type: {
-            name: 'string'
-          },
-          required: true,
-          description: ''
-        }
-      }
-    }]);
-  });
-
-  it('should generate something for multiple props', () => {
-    checkDocgenOutputForProptypes(`
+    }
+  }, {
+    name: 'multiple props',
+    propTypes: `
       prop1: PropTypes.string,
       prop2: PropTypes.number
-    `, [{
-        description: '',
-        methods: [],
-        props: {
-          prop1: {
-            type: {
-              name: 'string'
-            },
-            required: false,
-            description: ''
-          },
-          prop2: {
-            type: {
-              name: 'number'
-            },
-            required: false,
-            description: ''
-          }
-        }
-      }]);
+    `,
+    output: {
+      prop1: {
+        type: {
+          name: 'string'
+        },
+        required: false,
+        description: ''
+      },
+      prop2: {
+        type: {
+          name: 'number'
+        },
+        required: false,
+        description: ''
+      }
+    }
+
+  }];
+
+  propTests.forEach(({ name, propTypes, output }) => {
+    it(`should generate something known for ${name}`, () => {
+      // This needs to be declared here so eval can see it.
+      const Foo = { __docgenInfo: null };
+
+      // eslint-disable-next-line no-eval
+      eval(generateAndCompileCode(propTypes, 'Foo'));
+
+      // TODO: why is docgenInfo an array?
+      expect(Foo.__docgenInfo[0].props).to.deep.equal(output);
+    });
   });
 
   /**
@@ -144,32 +140,5 @@ describe('Learning react-docgen', () => {
     return compileCodeWithDocgen(
       generateCode(propTypes, componentName)
     );
-  }
-
-  /**
-   * @param {String} propTypes
-   *
-   * @returns {*}
-   */
-  function getDocgenInfo(propTypes) {
-    // This needs to be declared here so eval can see it.
-    // It's also initialized with a dummy value to make it look like the
-    // __docgenInfo property access below is 'valid'.
-    const Foo = {};
-
-    // eslint-disable-next-line no-eval
-    eval(generateAndCompileCode(propTypes, 'Foo'));
-
-    return Foo.__docgenInfo;
-  }
-
-  /**
-   * @param {String} propTypes
-   * @param {*} docgenOutput
-   */
-  function checkDocgenOutputForProptypes(propTypes, docgenOutput) {
-    const info = getDocgenInfo(propTypes);
-
-    expect(info).to.deep.equal(docgenOutput);
   }
 });
