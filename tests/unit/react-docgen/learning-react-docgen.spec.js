@@ -75,7 +75,10 @@ describe('Learning react-docgen', () => {
   });
 
   it('should generate something for multiple props', () => {
-    const info = getDocgenInfo('prop1: PropTypes.string, prop2: PropTypes.number');
+    const info = getDocgenInfo(`
+      prop1: PropTypes.string,
+      prop2: PropTypes.number
+    `);
 
     expect(info).to.deep.equal([{
       description: '',
@@ -159,7 +162,10 @@ describe('Learning react-docgen', () => {
    * @returns {*}
    */
   function getDocgenInfo(propTypes) {
-    let Foo;
+    // This needs to be declared here so eval can see it.
+    // It's also initialized with a dummy value to make it look like the
+    // __docgenInfo property access below is 'valid'.
+    const Foo = {};
 
     // eslint-disable-next-line no-eval
     eval(generateAndCompileCode(propTypes, 'Foo'));
