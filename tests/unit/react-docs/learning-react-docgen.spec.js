@@ -1,7 +1,7 @@
 import { transform } from 'babel-core';
 
 describe('Learning react-docgen', () => {
-  it('should generate something for a primitive prop', () => {
+  it('should generate something for a string prop', () => {
     const info = getDocgenInfo('primitive: PropTypes.string');
 
     expect(info).to.deep.equal([{
@@ -11,6 +11,86 @@ describe('Learning react-docgen', () => {
         primitive: {
           type: {
             name: 'string'
+          },
+          required: false,
+          description: ''
+        }
+      }
+    }]);
+  });
+
+  it('should generate something for a number prop', () => {
+    const info = getDocgenInfo('primitive: PropTypes.number');
+
+    expect(info).to.deep.equal([{
+      description: '',
+      methods: [],
+      props: {
+        primitive: {
+          type: {
+            name: 'number'
+          },
+          required: false,
+          description: ''
+        }
+      }
+    }]);
+  });
+
+  it('should generate something for a boolean prop', () => {
+    const info = getDocgenInfo('primitive: PropTypes.bool');
+
+    expect(info).to.deep.equal([{
+      description: '',
+      methods: [],
+      props: {
+        primitive: {
+          type: {
+            name: 'bool'
+          },
+          required: false,
+          description: ''
+        }
+      }
+    }]);
+  });
+
+
+  it('should generate something for a required prop', () => {
+    const info = getDocgenInfo('primitive: PropTypes.string.isRequired');
+
+    expect(info).to.deep.equal([{
+      description: '',
+      methods: [],
+      props: {
+        primitive: {
+          type: {
+            name: 'string'
+          },
+          required: true,
+          description: ''
+        }
+      }
+    }]);
+  });
+
+  it('should generate something for multiple props', () => {
+    const info = getDocgenInfo('prop1: PropTypes.string, prop2: PropTypes.number');
+
+    expect(info).to.deep.equal([{
+      description: '',
+      methods: [],
+      props: {
+        prop1: {
+          type: {
+            name: 'string'
+          },
+          required: false,
+          description: ''
+        },
+        prop2: {
+          type: {
+            name: 'number'
           },
           required: false,
           description: ''
