@@ -72,7 +72,35 @@ describe('Learning react-docgen', () => {
         description: ''
       }
     }
-
+  }, {
+    name: 'a required prop',
+    propTypes: 'required: PropTypes.string.isRequired',
+    output: {
+      required: {
+        type: {
+          name: 'string'
+        },
+        required: true,
+        description: ''
+      }
+    }
+  }, {
+    name: 'a prop with a docstring',
+    propTypes: `
+      /**
+       * This is a docstring.
+       */
+      commented: PropTypes.string
+    `,
+    output: {
+      commented: {
+        type: {
+          name: 'string'
+        },
+        required: false,
+        description: 'This is a docstring.'
+      }
+    }
   }];
 
   propTests.forEach(({ name, propTypes, output }) => {
