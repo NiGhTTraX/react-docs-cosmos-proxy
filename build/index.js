@@ -62,7 +62,7 @@ module.exports =
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9201c743d1998feef36c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5999d61afa9fc8308c15"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1898,15 +1898,19 @@ var _default = __webpack_require__(29);
 
 var _default2 = _interopRequireDefault(_default);
 
-var _header = __webpack_require__(30);
+var _description = __webpack_require__(30);
+
+var _description2 = _interopRequireDefault(_description);
+
+var _header = __webpack_require__(31);
 
 var _header2 = _interopRequireDefault(_header);
 
-var _localstorage = __webpack_require__(33);
+var _localstorage = __webpack_require__(34);
 
 var _localstorage2 = _interopRequireDefault(_localstorage);
 
-__webpack_require__(36);
+__webpack_require__(37);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1927,6 +1931,9 @@ var Columns = [{
 }, {
   header: 'Default',
   component: _default2.default
+}, {
+  header: 'Description',
+  component: _description2.default
 }];
 var DefaultDocsTable = function DefaultDocsTable(props) {
   return _react2.default.createElement(_docsTable2.default, _extends({}, props, { Columns: Columns }));
@@ -4546,11 +4553,73 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = __webpack_require__(31);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Description = function (_Component) {
+  _inherits(Description, _Component);
+
+  function Description() {
+    _classCallCheck(this, Description);
+
+    return _possibleConstructorReturn(this, (Description.__proto__ || Object.getPrototypeOf(Description)).apply(this, arguments));
+  }
+
+  _createClass(Description, [{
+    key: 'render',
+    value: function render() {
+      var description = this.props.docs.description;
+
+      return _react2.default.createElement(
+        'span',
+        null,
+        description
+      );
+    }
+  }]);
+
+  return Description;
+}(_react.Component);
+
+Description.propTypes = {
+  docs: _propTypes2.default.shape({ description: _propTypes2.default.string })
+};
+Description.defaultProps = {
+  docs: { description: '' }
+};
+exports.default = Description;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(32);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-__webpack_require__(32);
+__webpack_require__(33);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4650,7 +4719,7 @@ var _initialiseProps = function _initialiseProps() {
 exports.default = Header;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -4705,7 +4774,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -4736,7 +4805,7 @@ if(true) {
 }
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4748,11 +4817,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _abstractCache = __webpack_require__(34);
+var _abstractCache = __webpack_require__(35);
 
 var _abstractCache2 = _interopRequireDefault(_abstractCache);
 
-var _store = __webpack_require__(35);
+var _store = __webpack_require__(36);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -4800,7 +4869,7 @@ var LocalStorage = function (_AbstractCache) {
 exports.default = LocalStorage;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4877,7 +4946,7 @@ var AbstractCache = function () {
 exports.default = AbstractCache;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 /*! store2 - v2.5.11 - 2018-01-18
@@ -5119,7 +5188,7 @@ exports.default = AbstractCache;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag

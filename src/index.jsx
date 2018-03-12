@@ -5,6 +5,7 @@ import DocsTable from 'src/components/docs-table/docs-table.jsx';
 import Name from 'src/components/docs-table/columns/name.jsx';
 import Type from 'src/components/docs-table/columns/type.jsx';
 import Default from 'src/components/docs-table/columns/default.jsx';
+import Description from 'src/components/docs-table/columns/description.jsx';
 
 import Header from 'src/components/header.jsx';
 import LocalStorage from 'src/lib/localstorage.js';
@@ -22,6 +23,9 @@ const Columns = [{
 }, {
   header: 'Default',
   component: Default
+}, {
+  header: 'Description',
+  component: Description
 }];
 const DefaultDocsTable = props => <DocsTable {...props} Columns={Columns} />;
 
