@@ -20,7 +20,11 @@ describe('DocsProxy', () => {
         value: NextProxy,
         next
       },
-      component: Component
+      fixture: {
+        component: Component
+      },
+      onFixtureUpdate: () => {},
+      onComponentRef: () => {}
     };
 
     Docs = createSpy({ name: 'Docs' });

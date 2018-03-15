@@ -39,14 +39,14 @@
   "dependencies": {
     "classnames": "~2.2.5",
     "prop-types": "~15.6.0",
-    "react-cosmos-utils": "~2.0.0",
+    "react-cosmos-shared": "^3.6.1",
     "reset-css": "~2.2.1",
     "store2": "~2.5.9"
   },
   "peerDependencies": {
     "babel-plugin-react-docgen": "^1.8.1",
     "react": "^16.0.0",
-    "react-cosmos-webpack": "^2.1.0",
+    "react-cosmos": "^3.7.1",
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
@@ -88,8 +88,8 @@
     "mugshot-webdriverio": "~1.0.0",
     "nyc": "~11.3.0",
     "react": "^16.0.0",
-    "react-cosmos-voyager": "~2.0.0",
-    "react-cosmos-webpack": "^2.1.0",
+    "react-cosmos": "^3.7.1",
+    "react-cosmos-voyager": "^3.6.1",
     "react-dom": "^16.0.0",
     "react-hot-loader": "~3.0.0-beta.6",
     "sinon": "~4.1.1",

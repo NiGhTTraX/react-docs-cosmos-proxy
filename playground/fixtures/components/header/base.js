@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from 'src/components/header.jsx';
 
 const nullStorage = {
   get() { },
@@ -6,8 +7,11 @@ const nullStorage = {
 };
 
 export default {
+  component: Header,
+
   props: {
     cache: nullStorage
   },
+
   children: <span>Content</span>
 };

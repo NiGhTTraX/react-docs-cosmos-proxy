@@ -1,7 +1,7 @@
-import path from 'path';
+const path = require('path');
 
 
-export default {
+module.exports = {
   componentPaths: [
     path.join(__dirname, '../src/components'),
     path.join(__dirname, 'components')
