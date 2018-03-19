@@ -12,6 +12,7 @@ export async function loadFixture(component, fixture) {
 
   // Switch focus to the only frame on the page, the one displaying the
   // component.
+  browser.waitForVisible('iframe', 15 * 1000);
   const { value: loaderIframe } = await browser.element('iframe');
   await browser.frame(loaderIframe);
 }

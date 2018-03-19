@@ -48,10 +48,10 @@ before('Connecting to Selenium', function() {
   return client;
 });
 
-beforeEach('Waiting for app to render', function() {
+beforeEach('Waiting for app to render', async function() {
   return global.browser.url('http://playground:8989/')
     // Wait for the playground to be up.
-    .then(() => global.browser.waitForVisible('[class*=__header__]', 5 * 1000));
+    .then(() => global.browser.waitForVisible('[class*=__header__]', 15 * 1000));
 });
 
 afterEach('coverage', async function() {
@@ -63,7 +63,7 @@ afterEach('coverage', async function() {
 
   fs.writeFileSync(
     path.join(__dirname, 'results', 'coverage', `${BROWSER}_${name}.json`),
-    coverage
+    coverage || {}
   );
 });
 
