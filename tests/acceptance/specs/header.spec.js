@@ -3,6 +3,7 @@ import { loadFixture } from 'tests/acceptance/helpers.js';
 describe('Header', () => {
   beforeEach(async () => {
     await loadFixture('playground/components/acceptance/OneProp', 'base');
+    await browser.waitForVisible('.header .content', 15 * 1000);
   });
 
   it('should persist the toggle state', async () => {
@@ -17,11 +18,6 @@ describe('Header', () => {
     return browser.getAttribute('.header .content', 'class');
   }
   afterEach(async () => {
-    try {
-      await browser.localStorage('DELETE');
-    } catch (err) {
-    // reset if we can't clear local storage
-      await browser.click('.header .toggle');
-    }
+    await browser.execute('localStorage.clear()');
   });
 });

@@ -46,6 +46,15 @@ describe('DocsProxy', () => {
       render(<DocsProxy {...props} />);
     });
 
+    it('if no docs component passed, should render default', () => {
+      const FakeDocsTable = createSpy({ name: 'FakeDocsTable' });
+      createDocsProxy.__Rewire__('DocsTable', FakeDocsTable);
+      const NewDocsProxy = createDocsProxy();
+      Component.__docgenInfo = docs;
+      render(<NewDocsProxy {...props} />);
+      expect(FakeDocsTable).to.have.been.rendered;
+    });
+
     it('should render the next proxy', () => {
       expect(NextProxy).to.have.been.renderedWith({
         ...props,

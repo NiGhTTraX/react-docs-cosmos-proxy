@@ -56,15 +56,17 @@ beforeEach('Waiting for app to render', async function() {
 
 afterEach('coverage', async function() {
   const { value: coverage } = await browser.execute(function getCoverage() {
-    return JSON.stringify(window.__coverage__);
+    return window.__coverage__ ? JSON.stringify(window.__coverage__) : null;
   });
 
   const name = this.currentTest.fullTitle().replace(/\//g, '_');
-
   fs.writeFileSync(
     path.join(__dirname, 'results', 'coverage', `${BROWSER}_${name}.json`),
-    coverage || {}
+    coverage || ''
   );
+  if (!coverage) {
+    console.warn(`WARNING: No coverage report available for test ${name}`);
+  }
 });
 
 after(function() {
