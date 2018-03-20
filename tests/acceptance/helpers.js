@@ -12,6 +12,7 @@ export async function loadFixture(component, fixture) {
 
   // Switch focus to the only frame on the page, the one displaying the
   // component.
+  await browser.waitForVisible('iframe', 15 * 1000);
   const { value: loaderIframe } = await browser.element('iframe');
   await browser.frame(loaderIframe);
 }
@@ -30,6 +31,7 @@ export async function loadFixture(component, fixture) {
  *     3) there's no baseline to compare against.
  */
 export async function checkForVisualChanges(name, selector = 'body') {
+  await browser.waitForVisible(selector, 15 * 1000);
   return new Promise((resolve, reject) => {
     try {
       // eslint-disable-next-line consistent-return

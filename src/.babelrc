@@ -5,7 +5,8 @@
     "unit": {
       "plugins": [
         "../babel/babel-plugin-remove-asset-imports",
-        "istanbul"
+        "istanbul",
+        "rewire",
       ]
     },
 
