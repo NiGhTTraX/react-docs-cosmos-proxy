@@ -1,4 +1,5 @@
 --require babel-polyfill
 --require babel-register
+--require ignore-styles
 --timeout 0
 --inspect-brk=0.0.0.0:9229

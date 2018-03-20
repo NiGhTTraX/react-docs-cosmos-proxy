@@ -10,6 +10,12 @@
       ]
     },
 
+    //Used by our integration
+    "acceptance": {
+      "plugins": [
+        "istanbul"
+      ]
+    },
     //Needed to instrument the cosmos playground for our acceptance tests
     "development": {
       "plugins": [
