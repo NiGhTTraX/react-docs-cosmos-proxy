@@ -5,11 +5,13 @@
     "unit": {
       "plugins": [
         "../babel/babel-plugin-remove-asset-imports",
-        "istanbul"
+        "istanbul",
+        "rewire",
       ]
     },
 
-    "acceptance": {
+    //Needed to instrument the cosmos playground for our acceptance tests
+    "development": {
       "plugins": [
         "istanbul"
       ]

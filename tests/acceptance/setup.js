@@ -48,23 +48,25 @@ before('Connecting to Selenium', function() {
   return client;
 });
 
-beforeEach('Waiting for app to render', function() {
+beforeEach('Waiting for app to render', async function() {
   return global.browser.url('http://playground:8989/')
     // Wait for the playground to be up.
-    .then(() => global.browser.waitForVisible('[class*=__header__]', 5 * 1000));
+    .then(() => global.browser.waitForVisible('[class*=__header__]', 15 * 1000));
 });
 
 afterEach('coverage', async function() {
   const { value: coverage } = await browser.execute(function getCoverage() {
-    return JSON.stringify(window.__coverage__);
+    return window.__coverage__ ? JSON.stringify(window.__coverage__) : null;
   });
 
   const name = this.currentTest.fullTitle().replace(/\//g, '_');
-
   fs.writeFileSync(
     path.join(__dirname, 'results', 'coverage', `${BROWSER}_${name}.json`),
-    coverage
+    coverage || ''
   );
+  if (!coverage) {
+    console.warn(`WARNING: No coverage report available for test ${name}`);
+  }
 });
 
 after(function() {
