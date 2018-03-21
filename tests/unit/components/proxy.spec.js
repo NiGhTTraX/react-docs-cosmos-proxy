@@ -20,7 +20,11 @@ describe('DocsProxy', () => {
         value: NextProxy,
         next
       },
-      component: Component
+      fixture: {
+        component: Component
+      },
+      onFixtureUpdate: () => {},
+      onComponentRef: () => {}
     };
 
     Docs = createSpy({ name: 'Docs' });
@@ -40,6 +44,15 @@ describe('DocsProxy', () => {
       Component.__docs = docs;
 
       render(<DocsProxy {...props} />);
+    });
+
+    it('if no docs component passed, should render default', () => {
+      const FakeDocsTable = createSpy({ name: 'FakeDocsTable' });
+      createDocsProxy.__Rewire__('DocsTable', FakeDocsTable);
+      const NewDocsProxy = createDocsProxy();
+      Component.__docgenInfo = docs;
+      render(<NewDocsProxy {...props} />);
+      expect(FakeDocsTable).to.have.been.rendered;
     });
 
     it('should render the next proxy', () => {

@@ -1,16 +1,8 @@
-import path from 'path';
+const path = require('path');
 
 
-export default {
-  componentPaths: [
-    path.join(__dirname, '../src/components'),
-    path.join(__dirname, 'components')
-  ],
-
-  fixturePaths: [
-    path.join(__dirname, 'fixtures')
-  ],
-
+module.exports = {
+  fileMatch: '**/{__fixture?(s)__,fixture?(s)}/**/*.{js,jsx,ts,tsx}',
   webpackConfigPath: path.join(__dirname, '../src/webpack.config.dev.js'),
   hostname: '0.0.0.0'
 };

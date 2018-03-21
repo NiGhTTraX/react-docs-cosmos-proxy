@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { proxyPropTypes } from 'react-cosmos-utils/lib/proxy-prop-types';
+import { proxyPropTypes } from 'react-cosmos-shared/lib/react';
 
 import DocsTable from 'src/components/docs-table/docs-table.jsx';
 import Name from 'src/components/docs-table/columns/name.jsx';
@@ -31,15 +31,15 @@ const DefaultDocsTable = props => <DocsTable {...props} Columns={Columns} />;
  * @param {String} docsProperty The name of the property on the component
  *     that holds the documentation.
  */
-export default ({
+const createDocsProxy = ({
   Docs = DefaultDocsTable,
   docsProperty = '__docgenInfo'
 } = {}) => class DocsProxy extends Component {
   static propTypes = proxyPropTypes;
 
   render() {
-    const { value: NextProxy, next } = this.props.nextProxy;
-    const { [docsProperty]: docs } = this.props.component;
+    const { nextProxy: { value: NextProxy, next },
+      fixture: { component: { [docsProperty]: docs } } } = this.props;
 
     return <div className="docs-proxy">
       {docs ? this.renderDocs() : null}
@@ -51,7 +51,7 @@ export default ({
 
   renderDocs() {
     // TODO: move this to a separate component
-    const { [docsProperty]: docs } = this.props.component;
+    const { fixture: { component: { [docsProperty]: docs } } } = this.props;
 
     return <div className="docs-panel">
       <Header cache={headerCache}>
@@ -60,3 +60,5 @@ export default ({
     </div>;
   }
 };
+
+export default createDocsProxy;
