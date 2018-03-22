@@ -37,7 +37,6 @@ export default class Docs extends Component {
   };
 
   render() {
-    console.log(`styles from inside component ${JSON.stringify(styles)}`);
     const { displayName, description, props } = this.props;
 
     return <div className={styles['docs-table']}>
