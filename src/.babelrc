@@ -3,18 +3,12 @@
 
   "env": {
     "unit": {
-      "plugins": [
-        "../babel/babel-plugin-remove-asset-imports",
-        "istanbul",
-        "rewire",
-      ]
+      "plugins": ["istanbul", "rewire"]
     },
 
     //Needed to instrument the cosmos playground for our acceptance tests
     "development": {
-      "plugins": [
-        "istanbul"
-      ]
+      "plugins": ["istanbul"]
     }
   }
 }

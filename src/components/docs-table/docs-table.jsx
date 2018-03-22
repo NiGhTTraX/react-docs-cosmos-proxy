@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './docs-table.less';
+import styles from './docs-table.less';
 
 export default class Docs extends Component {
   static propTypes = {
@@ -37,12 +37,13 @@ export default class Docs extends Component {
   };
 
   render() {
+    console.log(`styles from inside component ${JSON.stringify(styles)}`);
     const { displayName, description, props } = this.props;
 
-    return <div className="docs-table">
+    return <div className={styles['docs-table']}>
       <header>
-        <h1 className="title">{displayName}</h1>
-        {description && <h2 className="description">{description}</h2>}
+        <h1 className={styles.title}>{displayName}</h1>
+        {description && <h2 className={styles.description}>{description}</h2>}
       </header>
       {props && this.renderProps()}
     </div>;
@@ -51,18 +52,18 @@ export default class Docs extends Component {
   renderProps() {
     const { props, Columns } = this.props;
 
-    return <table className="props">
+    return <table className={styles.props}>
       <thead>
         <tr>
-          {Columns.map(({ header }) => <th key={header} className="prop-header">
+          {Columns.map(({ header }) => <th key={header} className={styles['prop-header']}>
             {header}
           </th>)}
         </tr>
       </thead>
       <tbody>
-        {Object.keys(props).map(prop => <tr key={prop} className="prop">
+        {Object.keys(props).map(prop => <tr key={prop} className={styles.prop}>
           {Columns.map(({ header, component: PropInfo }) => <td key={header}
-            className="prop-info"
+            data-testid="prop-info"
           >
             <PropInfo name={prop} docs={props[prop]} />
           </td>)}
