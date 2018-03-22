@@ -8,10 +8,12 @@ describe('Default column', () => {
     const $default = $render(<Default docs={{ required: false }} />);
     expect($default.text()).to.be.empty;
   });
+
   it('show required if set', () => {
     const $default = $render(<Default docs={{ required: true }} />);
     expect($default.text()).to.equal('Required');
   });
+
   it('show default value if set', () => {
     const $default = $render(<Default docs={{ required: false, defaultValue: { value: 'value' } }} />);
     expect($default.text()).to.equal('value');

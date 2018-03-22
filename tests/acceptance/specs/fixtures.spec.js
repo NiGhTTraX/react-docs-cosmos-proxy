@@ -17,10 +17,8 @@ function getFixtureModules(fixtureFiles) {
   return fixtureFiles.reduce(
     (acc, f) => ({
       ...acc,
-      [f.filePath]: importModule(require(f.filePath)) // eslint-disable-line
-    }
-    ),
-    {}
+      [f.filePath]: importModule(require(f.filePath)) // eslint-disable-line global-require, import/no-dynamic-require, max-len
+    }), {}
   );
 }
 
