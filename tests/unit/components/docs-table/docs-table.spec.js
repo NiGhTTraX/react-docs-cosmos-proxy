@@ -3,6 +3,7 @@ import $ from 'jquery';
 import DocsTable from 'src/components/docs-table/docs-table.jsx';
 import { $render } from 'tests/unit/helpers/rendering.js';
 import { createSpy } from 'tests/unit/helpers/chai-react.js';
+import { sel } from 'tests/unit/helpers/selectors.js';
 
 describe('DocsTable', () => {
   let $docsTable, Columns;
@@ -49,7 +50,7 @@ describe('DocsTable', () => {
     });
 
     it('should render all the prop info', () => {
-      expect($docsTable.find('.prop-info')).to.have.length(2 * 2);
+      expect($docsTable.find(sel('prop-info'))).to.have.length(2 * 2);
 
       Object.keys(props).forEach(prop => {
         Columns.forEach(({ component }) => {

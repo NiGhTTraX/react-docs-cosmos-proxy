@@ -2,13 +2,7 @@
   "name": "react-cosmos-docs-proxy",
   "version": "1.0.0",
   "description": "A React Cosmos proxy for showing component docs using react-docgen",
-  "keywords": [
-    "react",
-    "cosmos",
-    "playground",
-    "docs",
-    "docgen"
-  ],
+  "keywords": ["react", "cosmos", "playground", "docs", "docgen"],
   "repository": {
     "type": "git",
     "url": "git@github.com:NiGhTTraX/react-docs-cosmos-proxy.git"
@@ -16,25 +10,30 @@
   "author": "Andrei Picus",
   "license": "MIT",
   "module": "./src/docs-proxy.jsx",
+  "main": "./build/index.js",
   "scripts": {
     "test": "./tests/run.sh",
     "test:unit": "NODE_ENV=unit nyc npm run _mocha",
     "test:unit:watch": "NODE_ENV=unit npm run _mocha -- --opts tests/unit/mocha.watch.opts",
-    "_mocha": "mocha tests/unit/helpers/index.node.js 'tests/unit/**/*.spec.js'",
-    "test:unit:debug": "NODE_ENV=unit webpack --bail -w --config ./tests/unit/webpack.config.unit.js",
+    "_mocha":
+      "mocha --opts tests/unit/mocha.opts tests/unit/helpers/index.node.js 'tests/unit/**/*.spec.js'",
+    "test:unit:debug":
+      "NODE_ENV=unit webpack --bail -w --config ./tests/unit/webpack.config.unit.js",
     "test:integrated": "./tests/integrated/run.sh",
     "test:integrated:debug": "./tests/integrated/debug.sh",
     "_test:integrated": "karma start tests/integrated/karma.config.js",
     "_test:integrated:debug": "karma start tests/integrated/karma.debug.config.js",
     "test:acceptance": "./tests/acceptance/run.sh",
     "test:acceptance:debug": "./tests/acceptance/debug.sh",
-    "_test:acceptance": "mocha --require ignore-styles --opts tests/acceptance/mocha.opts tests/acceptance/setup.js --recursive tests/acceptance/specs",
-    "_test:acceptance:debug": "mocha --require ignore-styles --opts tests/acceptance/mocha.debug.opts tests/acceptance/setup.js --recursive tests/acceptance/specs",
+    "_test:acceptance": "mocha --opts tests/acceptance/mocha.opts tests/acceptance/setup.js --recursive tests/acceptance/specs",
+    "_test:acceptance:debug": "mocha --opts tests/acceptance/mocha.debug.opts tests/acceptance/setup.js --recursive tests/acceptance/specs",
     "start": "./start.sh",
+    "build": "NODE_ENV=production webpack --config ./src/webpack.config.prod.js",
     "playground": "cosmos --config playground/cosmos.config.js",
     "lint": "npm run lint:files -- .",
     "lint:files": "eslint --ext js --ext jsx",
-    "postinstall": "./tools/install-git-hooks.sh"
+    "postinstall": "./tools/install-git-hooks.sh",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "classnames": "~2.2.5",
@@ -66,6 +65,7 @@
     "babel-register": "~6.26.0",
     "chai": "~4.1.2",
     "css-loader": "~0.28.0",
+    "css-modules-require-hook": "^4.2.3",
     "eslint": "~4.9.0",
     "eslint-config-airbnb": "~16.0.0",
     "eslint-import-resolver-babel-module": "~4.0.0-beta.3",
@@ -89,6 +89,7 @@
     "mugshot-looks-same": "~1.0.0",
     "mugshot-webdriverio": "~1.0.0",
     "nyc": "~11.3.0",
+    "postcss-less": "^1.1.5",
     "react": "^16.0.0",
     "react-cosmos": "^3.7.1",
     "react-cosmos-voyager": "^3.6.1",

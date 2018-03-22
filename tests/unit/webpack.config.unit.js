@@ -21,10 +21,9 @@ module.exports = {
       exclude: /node_modules/,
       use: 'babel-loader'
     }, {
-      // Don't bundle static assets.
-      test: /\.css$/,
+      test: /\.less/,
       exclude: /node_modules/,
-      use: [path.join(__dirname, 'noop-loader.js')]
+      use: ['style-loader', 'css-loader', 'less-loader']
     }]
   }
 };

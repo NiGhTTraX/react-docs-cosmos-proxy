@@ -41,9 +41,9 @@ const createDocsProxy = ({
     const { nextProxy: { value: NextProxy, next },
       fixture: { component: { [docsProperty]: docs } } } = this.props;
 
-    return <div className="docs-proxy">
+    return <div data-testid="docs-proxy">
       {docs ? this.renderDocs() : null}
-      <div className="component-panel">
+      <div data-testid="component-panel">
         <NextProxy {...this.props} nextProxy={next()} />
       </div>
     </div>;
@@ -53,7 +53,7 @@ const createDocsProxy = ({
     // TODO: move this to a separate component
     const { fixture: { component: { [docsProperty]: docs } } } = this.props;
 
-    return <div className="docs-panel">
+    return <div data-testid="docs-panel">
       <Header cache={headerCache}>
         <Docs {...docs} />
       </Header>

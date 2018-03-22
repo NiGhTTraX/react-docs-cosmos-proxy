@@ -1,5 +1,2 @@
 --require tests/unit/setup
 --require babel-register
---watch
---watch-extensions js,jsx
---reporter min

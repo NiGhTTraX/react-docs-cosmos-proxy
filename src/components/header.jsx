@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './header.less';
+import styles from './header.less';
 
 
 export default class Header extends Component {
@@ -29,11 +29,11 @@ export default class Header extends Component {
     const { children } = this.props;
     const { hidden } = this.state;
 
-    return <div className="header">
-      <div className={classNames('content', { hidden })}>
+    return <div className={styles.header}>
+      <div className={classNames(styles.content, { [styles.hidden]: hidden })}>
         {children}
       </div>
-      <button className="toggle" onClick={this.onToggle}>
+      <button className={styles.toggle} onClick={this.onToggle}>
         {this.renderToggle()}
       </button>
     </div>;

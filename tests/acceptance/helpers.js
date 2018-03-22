@@ -1,3 +1,4 @@
+import { sel } from '../unit/helpers/selectors.js';
 /* global mugshot */
 
 /**
@@ -75,7 +76,7 @@ export function mugshotSuite(name, suite) {
     return checkForVisualChanges(
       screenshotName,
       // TODO: refactor this out
-      '.docs-proxy'
+      sel('docs-proxy')
     );
   }
 
