@@ -1,6 +1,8 @@
 react-docs-cosmos-proxy
 ======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/NiGhTTraX/react-docs-cosmos-proxy.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/NiGhTTraX/react-docs-cosmos-proxy.svg?branch=master)](https://travis-ci.org/NiGhTTraX/react-cosmos-docs-proxy)
 
 ----
